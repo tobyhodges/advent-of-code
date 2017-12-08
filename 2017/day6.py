@@ -17,8 +17,8 @@ def reallocate_blocks(input_list):
     current_state = ''.join([str(x) for x in input_list])
     return current_state, input_list
 
-inp = '0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11'
-inp = [int(x) for x in inp.split()]
+inp = argv[1:]
+inp = [int(x) for x in inp]
 seen_states = []
 last_seen = 'whatevs'
 steps = 0
@@ -33,6 +33,7 @@ steps = 0
 #         break
 # print(steps)
 
+# part 2
 while True:
     last_seen, inp = reallocate_blocks(inp)
     if last_seen not in seen_states:
