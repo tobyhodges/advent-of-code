@@ -1,2 +1,2 @@
-# advent-of-code
-terrible attempts at AoC challenges
+# Advent of Code
+behold! my pathetic attempts at AoC challenges. 
