@@ -24,7 +24,7 @@ def day2part1():
 # Part 2
 ##############################################################################
 
-def HammingDistance(str1, str2):
+def getDistance(str1, str2):
     distance = 0
     for i in range(len(str1)):
         if str1[i] != str2[i]:
@@ -37,7 +37,7 @@ def day2part2():
         for l in lines:
             for m in lines:
                 if l != m:
-                    dist = HammingDistance(l, m)
+                    dist = getDistance(l, m)
                     if dist == 1:
                         return f"{''.join([l[i] for i in range(len(l)) if l[i] == m[i]])}"
 
