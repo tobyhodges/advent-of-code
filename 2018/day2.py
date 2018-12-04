@@ -39,7 +39,7 @@ def day2part2():
                 if l != m:
                     dist = HammingDistance(l, m)
                     if dist == 1:
-                        stdout.write(f"{''.join([l[i] for i in range(len(l)) if l[i] == m[i]])}\n")
-                        break
+                        return f"{''.join([l[i] for i in range(len(l)) if l[i] == m[i]])}"
 
-day2part2()
+
+stdout.write(f"{day2part2()}\n")
