@@ -62,6 +62,13 @@ def remove_node(workers_nodes, workers_times):
     else:
         raise ValueError('error: nothing to remove')
 
+def cleanup_nodes(nodes, done):
+    for node in nodes:
+        if done in nodes[node]:
+            nodes[node].remove(done)
+    del nodes[done]
+    return nodes
+
 def prioritise(doable, workers_nodes):
     output = doable[:]
     for n in doable:
@@ -70,7 +77,7 @@ def prioritise(doable, workers_nodes):
             output += [n]
     return output
 
-def day7part2(node):
+def day7part2(nodes):
     order = ''
     total = 0
     workers_times = [0,0,0,0,0]
@@ -86,20 +93,12 @@ def day7part2(node):
                 else:
                     total, workers_nodes, workers_times = run_down_clock(total, workers_nodes, workers_times)
                     done, workers_nodes, workers_times = remove_node(workers_nodes, workers_times)
-                    order += done
-                    for node in nodes:
-                        if done in nodes[node]:
-                            nodes[node].remove(done)
-                    del nodes[done]
+                    nodes = cleanup_nodes(nodes, done)
                     break
             else:
                 total, workers_nodes, workers_times = run_down_clock(total, workers_nodes, workers_times)
                 done, workers_nodes, workers_times = remove_node(workers_nodes, workers_times)
-                order += done
-                for node in nodes:
-                    if done in nodes[node]:
-                        nodes[node].remove(done)
-                del nodes[done]
+                nodes = cleanup_nodes(nodes, done)
                 break
     return total
 
